@@ -23,8 +23,8 @@ public class EmployeeRepository {
 	}
 
 	public Employee finaById(Integer id) {
-		
-		Employee employee = storage.entrySet().stream().filter(p -> p.getKey() == id).map(m -> m.getValue()).findFirst().get();
+		Employee employee = storage.get(id);
+		//Employee employee = storage.entrySet().stream().filter(p -> p.getKey() == id).map(m -> m.getValue()).findFirst().get();
 		return employee;
 	}
 	
@@ -40,7 +40,7 @@ public class EmployeeRepository {
 		Employee e;
 		if (null != (e = storage.get(id))) {
 			e.setSalary(e.getSalary()+salary);
-			return e.getSalary()+salary;
+			return e.getSalary();
 		} else {
 			return 0;
 		}
